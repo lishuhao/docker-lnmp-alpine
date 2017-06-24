@@ -1,8 +1,8 @@
 # web server
 nginx:
-  image: nginx:1.12-alpine
+  image: registry.cn-hangzhou.aliyuncs.com/shuhao/nginx-alpine:1
   ports:
-    - "8080:80"
+    - "80:80"
     #- "443:443"
   volumes:
     # app
@@ -43,7 +43,7 @@ mysql:
   image: registry.cn-hangzhou.aliyuncs.com/shuhao/mysql-5.7.18:1
   ports:
     # Allow client to access 3306
-    - "3306:3306"
+    - "3307:3306"
   volumes:
     # NOTE: your data will be stored in ./mysql
     - ./mysql:/var/lib/mysql
