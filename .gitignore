@@ -1,13 +1,4 @@
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
-
-*/cache/*
-!*/cache/index.html
-!*/cache/.htaccess
-
 .idea/
-access.log
-error.log
-
-mysql/*
+/logs/nginx/access.log
+/logs/nginx/error.log
+/mysql/*
