@@ -3,3 +3,6 @@
 /logs/nginx/error.log
 /mysql/*
 !/mysql/.gitkeep
+
+/app/site1/*
+!/app/site1/index.html
