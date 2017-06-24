@@ -1,0 +1,13 @@
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+.idea/
+logs/nginx/*
+logs/php-fpm/*
+logs/mysql/*
+/mysql/*
