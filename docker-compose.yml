@@ -40,7 +40,7 @@ fpm:
 
 # database
 mysql:
-  image: mysql:5.7.18
+  image: registry.cn-hangzhou.aliyuncs.com/shuhao/mysql-5.7.18:1
   ports:
     # Allow client to access 3306
     - "3306:3306"
