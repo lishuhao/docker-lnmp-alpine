@@ -7,7 +7,7 @@ application/logs/*
 !*/cache/.htaccess
 
 .idea/
-logs/nginx/*
-logs/php-fpm/*
-logs/mysql/*
-/mysql/*
+access.log
+error.log
+
+mysql/*
