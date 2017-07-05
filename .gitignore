@@ -4,5 +4,10 @@
 /mysql/*
 !/mysql/.gitkeep
 
-/app/site1/*
-!/app/site1/index.html
+/app/site1/static/upload/*
+!/app/site1/static/upload/.gitkeep
+
+/app/site1/application/logs/*
+!/app/site1/application/logs/index.html
+/app/site1/application/session/*
+!app/site1/application/session/.gitkeep
