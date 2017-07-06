@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use \Firebase\JWT\JWT;
 class Welcome extends CI_Controller {
 
 	/**
@@ -24,10 +25,49 @@ class Welcome extends CI_Controller {
 	}
 
 	public function hello(){
-        /*$this->load->database();
-        $query = $this->db->query('SELECT name FROM test LIMIT 1');
-        $row = $query->row_array();
-        echo $row['name'];*/
-        echo '<h1 style="text-align:center;">hello</h1>';
+        //echo config_item('composer_autoload');
+
+        $key = config_item('jwt_key');
+        $token = array(
+            "iss" => "http://example.org",
+            "aud" => "http://example.com",
+            "iat" => 1356999524,
+            "nbf" => 1357000000
+        );
+
+        /**
+         * IMPORTANT:
+         * You must specify supported algorithms for your application. See
+         * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40
+         * for a list of spec-compliant algorithms.
+         */
+        $jwt = JWT::encode($token, $key);
+        $decoded = JWT::decode($jwt, $key, array('HS256'));
+
+        print_r((array)$decoded);
+    }
+
+
+    public function init_db(){
+        $this->load->dbforge();
+        //$this->load->database();
+
+        //创建数据库
+        //$this->dbforge->create_database('mydb');
+
+        //创建user表
+        /*$user_fields = [
+            'name'=>[
+                'type'=>'VARCHAR',
+                'constraint'=>50
+            ],
+            'pwd'=>[
+                'type'=>'VARCHAR',
+                'constraint'=>50
+            ]
+        ];
+        $this->dbforge->add_field('id');
+        $this->dbforge->add_field($user_fields);
+        $this->dbforge->create_table('user', TRUE);*/
     }
 }

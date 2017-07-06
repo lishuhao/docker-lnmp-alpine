@@ -137,7 +137,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = TRUE;
+$config['composer_autoload'] = realpath(APPPATH . '../vendor/autoload.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -531,3 +531,6 @@ $config['img_ext'] = ['jpg','jpeg','png','gif'];
 $config['img_size'] = 2000;
 $config['img_name'] = time();
 $config['img_location'] = '/static/upload/';
+
+//jwt key
+$config['jwt_key'] = 'jB6UsW3GiKC2ntGeh1vKWvSeAyR7EP';

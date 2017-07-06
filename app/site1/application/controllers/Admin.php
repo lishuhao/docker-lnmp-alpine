@@ -18,10 +18,10 @@ class Admin extends CI_Controller  {
 	public function index()
 	{
         $this->load->helper('tag');
-        if(!hasLogin()){
+        /*if(!hasLogin()){
             redirect('admin/login');
             return;
-        }
+        }*/
         $posts = $this->post->get();
         $header = [
             'header'=>'Header',

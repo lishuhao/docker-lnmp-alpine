@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=mysql',
+	'dsn'	=> 'mysql:host=mysql;dbname=mydb',
 	'hostname' => 'mysql',
 	'port' => '3306',
 	'username' => 'root',
 	'password' => '123456',
-	'database' => '',
+	'database' => 'mydb',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
