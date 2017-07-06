@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller  {
+class Admin extends Back  {
 
     public function __construct() {
         parent::__construct();
@@ -17,6 +17,7 @@ class Admin extends CI_Controller  {
 	 */
 	public function index()
 	{
+        exit(0);
         $this->load->helper('tag');
         /*if(!hasLogin()){
             redirect('admin/login');
@@ -50,7 +51,7 @@ class Admin extends CI_Controller  {
         if($name && $pwd){
             $result = $this->user->check_pwd();
             if($result){
-                $this->session->set_userdata('login', 'true');
+                //$this->session->set_userdata('login', 'true');
                 redirect('/admin/index');
                 return TRUE;
             }
@@ -62,7 +63,7 @@ class Admin extends CI_Controller  {
      * 退出
      */
     public function logout(){
-        $this->session->unset_userdata('login');
+        //$this->session->unset_userdata('login');
         redirect('/admin/login');
     }
 }
