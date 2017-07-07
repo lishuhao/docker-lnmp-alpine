@@ -1,13 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends Back  {
+class Admin extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
 
-        $this->load->helper(['url','login']);
-        $this->load->library('session');
+        //$this->load->library('session');
         $this->load->model('user_model','user');
         $this->load->model('post_model','post');
     }
@@ -46,15 +45,15 @@ class Admin extends Back  {
      * 后台登录页
      */
 	public function login(){
+        $this->load->helper('jwt');
         $name = $this->input->post('name');
         $pwd = $this->input->post('pwd');
         if($name && $pwd){
-            $result = $this->user->check_pwd();
-            if($result){
-                //$this->session->set_userdata('login', 'true');
-                redirect('/admin/index');
-                return TRUE;
-            }
+            $jwt = gen_jwt($name);
+            $this->input->set_cookie('jwt',$jwt,config_item('jwt_exp'));
+
+            echo $jwt;
+            exit(0);
         }
         $this->load->view('admin/login');
     }
@@ -63,7 +62,7 @@ class Admin extends Back  {
      * 退出
      */
     public function logout(){
-        //$this->session->unset_userdata('login');
+        $this->input->set_cookie('jwt','');
         redirect('/admin/login');
     }
 }

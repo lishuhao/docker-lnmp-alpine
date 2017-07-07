@@ -6,7 +6,7 @@ class Post extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->helper(['url','login']);
+        $this->load->helper(['login']);
         if(!hasLogin()){
             redirect('admin/login');
             return;

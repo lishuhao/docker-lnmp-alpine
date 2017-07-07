@@ -534,3 +534,4 @@ $config['img_location'] = '/static/upload/';
 
 //jwt key
 $config['jwt_key'] = 'jB6UsW3GiKC2ntGeh1vKWvSeAyR7EP';
+$config['jwt_exp'] = 60 *60;//token过期时间
