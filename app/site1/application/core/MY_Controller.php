@@ -13,8 +13,8 @@ class MY_Controller extends CI_Controller  {
             $jwt = $this->input->cookie('jwt');
             $login = check_login($jwt);
             if(!$login){
-                show_error('未登录',403);
-                die(1);
+                redirect('/admin/login');
+                exit(0);
             }
             //设置cookie
             $new_jwt = update_login_cookie($login);

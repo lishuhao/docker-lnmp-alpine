@@ -5,14 +5,17 @@ class Post extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('session');
-        $this->load->helper(['login']);
-        if(!hasLogin()){
-            redirect('admin/login');
-            return;
-        }
-
         $this->load->model('post_model','post');
+    }
+
+    public function index(){
+        $posts = $this->post->get();
+        $data = [
+            'posts'=>$posts
+        ];
+        $this->load->view('admin/header');
+        $this->load->view('admin/post_list',$data);
+        $this->load->view('admin/footer');
     }
 
     //添加文章
@@ -20,25 +23,18 @@ class Post extends CI_Controller {
         if($this->input->method() == 'post'){   //保存文章
             //保存文章
             $this->post->insert();
-            redirect('/admin/index');
+            redirect('/post/index');
             exit(0);
         }
-
-        //加载视图
-        $this->load->helper('tag');
-        $header = [
-            'header'=>'Header',
-            'sub_header'=>'sub header',
-            'add'=>'true',
-        ];
         $footer = [
             'js'=>[
-                base_url('static/ckeditor/ckeditor.js'),
-                base_url('static/js/admin/add.js')
+                base_url('static/wangeditor/wangEditor.min.js'),
+                base_url('static/js/admin/add.js'),
             ]
         ];
-        $this->load->view('admin/header',$header);
-        $this->load->view('admin/add');
+
+        $this->load->view('admin/header');
+        $this->load->view('admin/add_post');
         $this->load->view('admin/footer',$footer);
     }
 
@@ -87,32 +83,31 @@ class Post extends CI_Controller {
     }
 
     public function upload_img(){
-        //判断是否是非法调用
-        if(empty($_GET['CKEditorFuncNum'])){
-            $this->mkHtml(1,"","错误的功能调用请求");
-        }
-
-        $config['upload_path']      = './static/upload/';
-        $config['allowed_types']    = 'gif|jpg|png|jpeg';
-        $config['max_size']         = 2000;
+        header('Content-Type: application/json');
+        $config['upload_path']      = config_item('img_location');
+        $config['allowed_types']    = config_item('img_ext');
+        $config['max_size']         = config_item('img_size');
         $config['file_name']       = time();
-
         $this->load->library('upload', $config);
-        $fn = $_GET['CKEditorFuncNum'];
-        if(!$this->upload->do_upload('upload')){
+
+        if(!$this->upload->do_upload()){
             $err_msg = $this->upload->display_errors();
-            $this->mkHtml($fn,'' ,$err_msg);
+            $json = [
+                'errno'=>1,
+                'msg'=>$err_msg
+            ];
+            echo json_encode($json);
+            return TRUE;
         }else{
             $upload_data = $this->upload->data();
             $img_url = base_url('static/upload/').$upload_data['file_name'];
-            $this->mkHtml($fn,$img_url ,'上传成功');
+            $json = [
+                'errno'=>0,
+                'data'=>[$img_url]
+            ];
+            echo json_encode($json);
+            return TRUE;
         }
 
-    }
-
-    //输出js调用
-    private function mkHtml($fn,$fileUrl,$message){
-        $str='<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction('.$fn.', \''.$fileUrl.'\', \''.$message.'\');</script>';
-        exit($str);
     }
 }

@@ -224,7 +224,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -527,10 +527,10 @@ $config['proxy_ips'] = '';
 //图片上传参数
 //扩展名
 $config['img_type'] = ['img'];
-$config['img_ext'] = ['jpg','jpeg','png','gif'];
-$config['img_size'] = 2000;
+$config['img_ext'] = 'gif|jpg|png|jpeg';
+$config['img_size'] = 3 * 1024;//3 M
 $config['img_name'] = time();
-$config['img_location'] = '/static/upload/';
+$config['img_location'] = './static/upload/';
 
 //jwt key
 $config['jwt_key'] = 'jB6UsW3GiKC2ntGeh1vKWvSeAyR7EP';

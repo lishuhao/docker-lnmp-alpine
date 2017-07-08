@@ -9,9 +9,9 @@ class Post_model extends CI_Model {
     public $id;         //文章id
     public $title;      //文章标题
     public $content;    //文章内容
-    public $created;    //创建时间  默认 当前时间
-    public $deleted;    //是否已删除 1删除；0不删除 默认0
-    public $sort;    //优先级 数字越大排序越靠前 默认1
+    //public $created;    //创建时间  默认 当前时间
+    //public $deleted;    //是否已删除 1删除；0不删除 默认0
+    //public $sort;    //优先级 数字越大排序越靠前 默认1
 
     public function __construct()
     {
@@ -24,10 +24,6 @@ class Post_model extends CI_Model {
     {
         $this->title    = $this->input->post('title');
         $this->content  = $this->input->post('content');
-        $this->deleted  = $this->input->post('deleted');
-        $this->sort     = $this->input->post('sort');
-        $this->created  = date('Y-m-d H:i:s');
-
         $this->db->insert('post', $this);
     }
 
