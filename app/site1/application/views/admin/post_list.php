@@ -4,6 +4,7 @@
  * Date:  2017/7/8
  */
 ?>
+<div class="row expanded">
 <table>
     <thead>
     <tr>
@@ -22,3 +23,4 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+</div>

@@ -3,6 +3,37 @@
  * User:  ShuHao
  * Date:  2017/7/8
  */
+//侧边栏导航菜单
+$nav = [
+    '文章管理'=>[
+        '文章列表'=>'/post/index',
+        '添加文章'=>'/post/add'
+    ],
+    '商品管理'=>[
+        '商品列表'=>'/goods/index',
+        '添加商品'=>'/goods/add'
+    ],
+    '订单管理'=>'#'
+];
+//current uri
+$cur_page = '/'.$this->uri->segment(1, '').'/'.$this->uri->segment(2,'');
+//active parent menu
+$parent_nav = '';
+foreach ($nav as $key => $val){
+    if(is_array($val)){
+        foreach ($val as $url){
+            if($url == $cur_page){
+                $parent_nav = $key;
+                break;
+            }
+        }
+    }else{
+        if($val == $cur_page){
+            $parent_nav = $key;
+            break;
+        }
+    }
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -21,7 +52,6 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
             height: 100%;
             max-height: 100%;
         }
@@ -49,14 +79,16 @@
             line-height: 50px;
             color: white;
         }
-        #logout{
+        .header-a{
             color: white;
-            display: inline-block;
-            width:50px;
+            display: block;
             text-align: center;
         }
-        #logout:hover{
+        .header-a:hover{
             background-color: rgba(0,0,0,0.1);
+        }
+        #logout{
+            width:50px;
         }
 
         nav ul {
@@ -84,18 +116,24 @@
     <!--side nav-->
     <div class="column small-2" id="left-nav">
         <div id="brand" class="text-center">
-            三页科技
+            <a class="header-a" href="/admin/index">三页科技</a>
         </div>
         <nav id="nav">
             <ul class="vertical menu accordion-menu" data-accordion-menu>
-                <li>
-                    <a href="#">文章管理</a>
-                    <ul class="menu vertical nested">
-                        <li><a href="/post/index">文章列表</a></li>
-                        <li><a href="/post/add">添加文章</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">订单管理</a></li>
+                <?php foreach ($nav as $key => $item): ?>
+                    <?php if (is_array($item)): ?>
+                        <li>
+                            <a href="#"><?php echo $key; ?></a>
+                            <ul class="menu vertical nested <?php echo $key == $parent_nav ? 'is-active' : ''; ?>">
+                                <?php foreach ($item as $k => $v): ?>
+                                    <li <?php echo $cur_page == $v ? 'class="is-active"' : ''; ?>><a href="<?php echo $v ?>" ><?php echo $k; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
+                    <?php else:?>
+                        <li><a href="<?php echo $item; ?>"><?php echo $key; ?></a></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </ul>
         </nav>
     </div>
@@ -104,8 +142,8 @@
         <!--header-->
         <div class="row expanded" id="header">
         <div class="column small-11"></div>
-        <div class="column small-1"><a id="logout">退出</a></div>
+        <div class="column small-1"><a class="header-a" id="logout">退出</a></div>
         </div>
         <!--main content-->
-        <div class="row expanded" id="main">
+        <div id="main">
 

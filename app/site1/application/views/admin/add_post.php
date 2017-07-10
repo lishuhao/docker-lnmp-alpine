@@ -4,6 +4,7 @@
  * Date:  2017/7/8
  */
 ?>
+<div class="row expanded">
 <div class="column small-8">
     <form>
         <div class="row">
@@ -25,3 +26,5 @@
     <a id="save" class="button expanded">保 存</a>
     <a id="del" class="button expanded">删 除</a>
 </div>
+</div>
+

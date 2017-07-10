@@ -13,6 +13,9 @@
 <script>
     //初始化foundation
     $(document).foundation();
+    //var active_li = $('a[href="/post/add"]').closest('li');
+    //active_li.addClass('is-active');
+    //active_li.closest('ul').addClass('is-active');
 </script>
 
 <!--js文件-->
