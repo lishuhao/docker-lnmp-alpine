@@ -9,13 +9,10 @@
 </div>
 <script src="<?php echo base_url('static/foundation/js/vendor/jquery.js');?>"></script>
 <script src="<?php echo base_url('static/foundation/js/vendor/what-input.js');?>"></script>
-<script src="<?php echo base_url('static/foundation/js/vendor/foundation.js');?>"></script>
+<script src="https://cdn.bootcss.com/foundation/6.4.1/js/foundation.min.js"></script>
 <script>
     //初始化foundation
     $(document).foundation();
-    //var active_li = $('a[href="/post/add"]').closest('li');
-    //active_li.addClass('is-active');
-    //active_li.closest('ul').addClass('is-active');
 </script>
 
 <!--js文件-->

@@ -20,7 +20,7 @@ nginx:
 # php-fpm
 fpm:
   # build: ./php-fpm
-  image: registry.cn-hangzhou.aliyuncs.com/shuhao/php-fpm-alpine:1.1
+  image: registry.cn-hangzhou.aliyuncs.com/shuhao/php-fpm-alpine:1.3
   ports:
     - "9000"
   volumes:

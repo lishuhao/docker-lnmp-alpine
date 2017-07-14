@@ -42,7 +42,7 @@ foreach ($nav as $key => $val){
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FD</title>
-    <link rel="stylesheet" href="<?php echo base_url('static/foundation/css/foundation.css'); ?>">
+    <link href="https://cdn.bootcss.com/foundation/6.4.1/css/foundation-float.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('static/foundation/font/foundation-icons.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('static/foundation/css/app.css'); ?>">
     <style type="text/css">
@@ -86,6 +86,7 @@ foreach ($nav as $key => $val){
         }
         .header-a:hover{
             background-color: rgba(0,0,0,0.1);
+            color: white;
         }
         #logout{
             width:50px;
