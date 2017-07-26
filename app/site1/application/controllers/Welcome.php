@@ -23,11 +23,6 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
-	public function hello(){
-        //echo config_item('composer_autoload');
-        echo 'hello';
-    }
-
 
     public function init_db(){
         $this->load->dbforge();
