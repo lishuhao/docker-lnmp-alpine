@@ -38,113 +38,131 @@ foreach ($nav as $key => $val){
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FD</title>
-    <link href="https://cdn.bootcss.com/foundation/6.4.1/css/foundation-float.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('static/foundation/font/foundation-icons.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('static/foundation/css/app.css'); ?>">
-    <style type="text/css">
-        html{
-            height:100%;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            max-height: 100%;
-        }
-        #container{
-            height:100%;
-        }
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FD</title>
+  <link href="https://cdn.bootcss.com/foundation/6.4.1/css/foundation-float.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url('static/foundation/font/foundation-icons.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('static/foundation/css/app.css'); ?>">
+  <style type="text/css">
+    html{
+      height:100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      max-height: 100%;
+    }
+    #container{
+      height:100%;
+    }
 
-        #brand{
-            background-color: #286A9A;
-            height: 50px;
-            line-height: 50px;
-        }
-        #left-nav{
-            color: white;
-            height:100%;
-            background-color: #1A2226;
-        }
-        .right-content,#left-nav{
-            padding-left: 0;
-            padding-right: 0;
-        }
-        #header{
-            background-color: #2D78B0;
-            height: 50px;
-            line-height: 50px;
-            color: white;
-        }
-        .header-a{
-            color: white;
-            display: block;
-            text-align: center;
-        }
-        .header-a:hover{
-            background-color: rgba(0,0,0,0.1);
-            color: white;
-        }
-        #logout{
-            width:50px;
-        }
+    #brand{
+      background-color: #286A9A;
+      height: 50px;
+      line-height: 50px;
+    }
+    #left-nav{
+      color: white;
+      height:100%;
+      background-color: #1A2226;
+    }
+    .right-content,#left-nav{
+      padding-left: 0;
+      padding-right: 0;
+    }
+    #header{
+      background-color: #2D78B0;
+      height: 50px;
+      line-height: 50px;
+      color: white;
+    }
+    .header-a{
+      color: white;
+      display: block;
+      text-align: center;
+    }
+    .header-a:hover{
+      background-color: rgba(0,0,0,0.1);
+      color: white;
+    }
+    #profile{
+      height: 100%;
+    }
+    #avatar{
+      height:80%;
+      width: auto;
+      clip-path: circle();
+    }
+    #info-card{
+      width:250px;
+      height:200px;
+      background-color: #2ba6cb;
+      position: absolute;
+      right:50px;
+      display: none;
+    }
+    #info-card a.button{
+      margin-bottom: 0;
+    }
+    #logout{
+      width:50px;
+    }
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
 
-        nav ul a {
-            text-decoration: none;
-            color: white;
-        }
-        nav ul a:hover{
-            background-color: #25272E;
-        }
+    nav ul a {
+      text-decoration: none;
+      color: white;
+    }
+    nav ul a:hover{
+      background-color: #25272E;
+    }
 
-        #main{
-            padding:0.5em;
-        }
-    </style>
+    #main{
+      padding:0.5em;
+    }
+  </style>
 </head>
 <body>
 
 <div class="row expanded" id="container">
-    <!--side nav-->
-    <div class="column small-2" id="left-nav">
-        <div id="brand" class="text-center">
-            <a class="header-a" href="/admin/index">三页科技</a>
-        </div>
-        <nav id="nav">
-            <ul class="vertical menu accordion-menu" data-accordion-menu>
-                <?php foreach ($nav as $key => $item): ?>
-                    <?php if (is_array($item)): ?>
-                        <li>
-                            <a href="#"><?php echo $key; ?></a>
-                            <ul class="menu vertical nested <?php echo $key == $parent_nav ? 'is-active' : ''; ?>">
-                                <?php foreach ($item as $k => $v): ?>
-                                    <li <?php echo $cur_page == $v ? 'class="is-active"' : ''; ?>><a href="<?php echo $v ?>" ><?php echo $k; ?></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </li>
-                    <?php else:?>
-                        <li><a href="<?php echo $item; ?>"><?php echo $key; ?></a></li>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </ul>
-        </nav>
+  <!--side nav-->
+  <div class="column small-2" id="left-nav">
+    <div id="brand" class="text-center">
+      <a class="header-a" href="/admin/index">三页科技</a>
     </div>
+    <nav id="nav">
+      <ul class="vertical menu accordion-menu" data-accordion-menu>
+          <?php foreach ($nav as $key => $item): ?>
+              <?php if (is_array($item)): ?>
+              <li>
+                <a href="#"><?php echo $key; ?></a>
+                <ul class="menu vertical nested <?php echo $key == $parent_nav ? 'is-active' : ''; ?>">
+                    <?php foreach ($item as $k => $v): ?>
+                      <li <?php echo $cur_page == $v ? 'class="is-active"' : ''; ?>><a href="<?php echo $v ?>" ><?php echo $k; ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+              </li>
+              <?php else:?>
+              <li><a href="<?php echo $item; ?>"><?php echo $key; ?></a></li>
+              <?php endif; ?>
+          <?php endforeach; ?>
+      </ul>
+    </nav>
+  </div>
 
-    <div class="column small-10 right-content">
-        <!--header-->
-        <div class="row expanded" id="header">
-        <div class="column small-11"></div>
-        <div class="column small-1"><a class="header-a" id="logout">退出</a></div>
-        </div>
-        <!--main content-->
-        <div id="main">
+  <div class="column small-10 right-content">
+    <!--header-->
+    <div class="row expanded" id="header">
+      <div class="column small-1 small-offset-11"><a class="header-a" id="logout">退出</a></div>
+    </div>
+    <!--main content-->
+    <div id="main">
 

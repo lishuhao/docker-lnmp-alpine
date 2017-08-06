@@ -1,5 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+echo '<?php'.PHP_EOL;
+echo "defined('BASEPATH') OR exit('No direct script access allowed');".PHP_EOL;
+?>
 
 /*
 | -------------------------------------------------------------------
@@ -74,24 +76,24 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn'	=> 'mysql:host=mysql;dbname=mydb',
-    'hostname' => 'mysql',
-    'port' => '3306',
-    'username' => 'root',
-    'password' => '123456',
-    'database' => 'mydb',
-    'dbdriver' => 'pdo',
-    'dbprefix' => '',
-    'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'),
-    'cache_on' => FALSE,
-    'cachedir' => '',
-    'char_set' => 'utf8mb4',
-    'dbcollat' => 'utf8mb4_general_ci',
-    'swap_pre' => '',
-    'encrypt' => FALSE,
-    'compress' => FALSE,
-    'stricton' => FALSE,
-    'failover' => array(),
-    'save_queries' => TRUE
+	'dsn'	=> 'mysql:host=mysql;dbname=mydb',
+	'hostname' => 'mysql',
+	'port' => '3306',
+	'username' => 'root',
+	'password' => '<?php echo $db_pwd; ?>',
+	'database' => 'mydb',
+	'dbdriver' => 'pdo',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8mb4',
+	'dbcollat' => 'utf8mb4_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
 );

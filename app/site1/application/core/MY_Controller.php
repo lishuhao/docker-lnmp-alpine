@@ -10,15 +10,14 @@ class MY_Controller extends CI_Controller  {
         if($m != 'login'){
             $this->load->helper('jwt');
             //检查cookie
-            $jwt = $this->input->cookie('jwt');
-            $login = check_login($jwt);
+            $login = check_admin_login();
             if(!$login){
                 redirect('/admin/login');
                 exit(0);
             }
             //设置cookie
             $new_jwt = update_login_cookie($login);
-            $this->input->set_cookie('jwt',$new_jwt,config_item('jwt_exp'));
+            $this->input->set_cookie(config_item('admin_cookie'),$new_jwt,config_item('jwt_exp'));
         }
     }
 }

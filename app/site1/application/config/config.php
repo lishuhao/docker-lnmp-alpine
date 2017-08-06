@@ -224,7 +224,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 4;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -325,7 +325,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '7f81138e422140d445dcaf286ca5f128';
 
 /*
 |--------------------------------------------------------------------------
@@ -535,3 +535,5 @@ $config['img_location'] = './static/upload/';
 //jwt key
 $config['jwt_key'] = 'jB6UsW3GiKC2ntGeh1vKWvSeAyR7EP';
 $config['jwt_exp'] = 60 *60;//token过期时间
+$config['admin_cookie'] = 'jwt_admin';
+$config['user_cookie'] = 'jwt_user';
