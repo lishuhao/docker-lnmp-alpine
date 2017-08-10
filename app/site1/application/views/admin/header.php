@@ -7,13 +7,17 @@
 $nav = [
     '文章管理'=>[
         '文章列表'=>'/post/index',
-        '添加文章'=>'/post/add'
+        '添加文章'=>'/post/add',
+        '文章分类'=>'/post/add_category'
     ],
-    '商品管理'=>[
-        '商品列表'=>'/goods/index',
-        '添加商品'=>'/goods/add'
+    '产品管理'=>[
+        '产品列表'=>'/goods/index',
+        '添加产品'=>'/goods/add'
     ],
-    '订单管理'=>'#'
+    '案例管理'=>'#',
+    '招聘管理'=>'#',
+    '类目管理'=>'/category/index',
+    '关于我们'=>'#'
 ];
 //current uri
 $cur_page = '/'.$this->uri->segment(1, '').'/'.$this->uri->segment(2,'');
@@ -127,6 +131,11 @@ foreach ($nav as $key => $val){
 
     #main{
       padding:0.5em;
+    }
+
+    .button,.button-group{
+      margin-top: 0.1rem;
+      margin-bottom: 0.1rem;
     }
   </style>
 </head>

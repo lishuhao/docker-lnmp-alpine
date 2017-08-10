@@ -5,7 +5,7 @@ class Post extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('post_model','post');
+        $this->load->model('Category_model','category');
     }
 
     public function index(){
@@ -109,5 +109,15 @@ class Post extends MY_Controller {
             return TRUE;
         }
 
+    }
+
+    //添加文章分类
+    public function add_category(){
+        $res = $this->category->module_category('post');
+
+        $data['all_category'] = $res;
+        $this->load->view('admin/header');
+        $this->load->view('admin/add_post_category',$data);
+        $this->load->view('admin/footer');
     }
 }
